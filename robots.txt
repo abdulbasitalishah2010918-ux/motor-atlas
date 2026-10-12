@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://abdulbasitalishah2010918-ux.github.io/motor-atlas/sitemap.xml

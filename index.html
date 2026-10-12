@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f5f1">
+  <meta name="description" content="Explore Motor Atlas, a curated guide to cars, specifications, and automotive parts. Search the catalog, compare cars, and learn about automotive systems.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://abdulbasitalishah2010918-ux.github.io/motor-atlas/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Motor Atlas — cars, understood">
+  <meta property="og:description" content="Search a curated car catalog, compare vehicle specifications, and explore practical guides to automotive parts.">
+  <meta property="og:url" content="https://abdulbasitalishah2010918-ux.github.io/motor-atlas/">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&amp;fit=crop&amp;w=1200&amp;q=82">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Motor Atlas — cars, understood</title>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Motor Atlas",
+      "description": "A curated guide to car specifications and automotive parts.",
+      "url": "https://abdulbasitalishah2010918-ux.github.io/motor-atlas/"
+    }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #202621;
+      --muted: #747a72;
+      --paper: #f5f5f1;
+      --surface: #fff;
+      --line: #e6e8e1;
+      --green: #c8f169;
+      --deep-green: #203f32;
+      --radius: 16px;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { min-width: 320px; margin: 0; color: var(--ink); background: var(--paper); }
+    button, input, select { font: inherit; }
+    button { color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+      outline: 3px solid #91b94a; outline-offset: 3px;
+    }
+    .shell { width: min(1220px, calc(100% - 48px)); margin-inline: auto; }
+    .topbar { height: 76px; display: flex; align-items: center; border-bottom: 1px solid var(--line); }
+    .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 26px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 800; letter-spacing: -.7px; white-space: nowrap; }
+    .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 11px; color: var(--deep-green); background: var(--green); }
+    .brand-mark svg { width: 22px; height: 22px; }
+    .nav { display: flex; align-items: center; gap: 30px; margin-inline: auto; }
+    .nav-link { padding: 9px 0; border: 0; color: #666d65; background: transparent; font-size: 13px; font-weight: 650; cursor: pointer; }
+    .nav-link[aria-current="page"] { color: var(--ink); box-shadow: 0 2px 0 var(--deep-green); }
+    .top-actions { display: flex; align-items: center; gap: 11px; }
+    .saved-button, .avatar { height: 39px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--line); background: white; }
+    .saved-button { gap: 8px; padding: 0 13px; border-radius: 999px; font-size: 12px; font-weight: 700; cursor: pointer; }
+    .saved-button svg { width: 16px; height: 16px; }
+    .avatar { width: 39px; border-radius: 50%; background: #e7e9df; font-size: 12px; font-weight: 750; }
+    .hero { min-height: 388px; position: relative; display: flex; align-items: flex-end; overflow: hidden; margin-top: 27px; border-radius: 22px; color: white; background: #24322e; }
+    .hero::before { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15, 26, 23, .88), rgba(15, 26, 23, .51) 52%, rgba(15, 26, 23, .05)), linear-gradient(0deg, rgba(15, 26, 23, .42), transparent 65%), url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1800&q=85") center 53% / cover; content: ""; }
+    .hero-content { position: relative; z-index: 1; width: min(620px, 100%); padding: 43px 49px 42px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 15px; color: #d0ec9e; font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; }
+    .eyebrow::before { width: 18px; height: 2px; background: var(--green); content: ""; }
+    .hero h1 { max-width: 530px; margin: 0; font-size: clamp(37px, 5.5vw, 64px); line-height: .99; letter-spacing: -2.8px; }
+    .hero-copy { max-width: 430px; margin: 17px 0 23px; color: rgba(255,255,255,.8); font-size: 14px; line-height: 1.7; }
+    .search-box { width: min(510px, 100%); min-height: 53px; display: flex; align-items: center; gap: 11px; padding: 5px 6px 5px 16px; border: 1px solid rgba(255,255,255,.22); border-radius: 10px; background: white; color: var(--ink); box-shadow: 0 8px 25px rgba(0,0,0,.15); }
+    .search-box svg { width: 19px; flex: 0 0 auto; color: #778078; }
+    .search-box input { min-width: 0; flex: 1; border: 0; outline: 0; color: var(--ink); background: transparent; font-size: 13px; }
+    .search-box input:focus-visible { outline: 0; }
+    .search-box button { align-self: stretch; padding: 0 17px; border: 0; border-radius: 7px; color: var(--deep-green); background: var(--green); font-size: 12px; font-weight: 800; cursor: pointer; }
+    .hero-note { display: flex; align-items: center; gap: 8px; margin: 15px 0 0; color: rgba(255,255,255,.72); font-size: 11px; }
+    .hero-note svg { width: 15px; color: var(--green); }
+    .page-section { padding: 46px 0 70px; }
+    .section-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 18px; margin-bottom: 23px; }
+    .section-kicker { margin: 0 0 7px; color: #748067; font-size: 10px; font-weight: 800; letter-spacing: 1.35px; text-transform: uppercase; }
+    .section-heading h2 { margin: 0; font-size: clamp(25px, 3vw, 34px); letter-spacing: -1.1px; }
+    .section-subtitle { margin: 7px 0 0; color: var(--muted); font-size: 13px; }
+    .result-count { color: var(--muted); font-size: 12px; white-space: nowrap; }
+    .toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 0 0 19px; }
+    .filter-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .filter-chip { min-height: 35px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; color: #616960; background: white; font-size: 11px; font-weight: 700; cursor: pointer; transition: background .15s, color .15s, border-color .15s; }
+    .filter-chip:hover { border-color: #b8c1ae; }
+    .filter-chip[aria-pressed="true"] { border-color: var(--deep-green); color: white; background: var(--deep-green); }
+    .toolbar-side { display: flex; align-items: center; gap: 10px; }
+    .select-wrap { position: relative; }
+    .select-wrap select { min-height: 36px; padding: 0 30px 0 11px; border: 1px solid var(--line); border-radius: 8px; color: #454c46; background: white; font-size: 11px; cursor: pointer; }
+    .select-wrap label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    .car-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 17px; }
+    .car-card { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); transition: transform .18s, box-shadow .18s; }
+    .car-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(25,39,28,.08); }
+    .car-photo { height: 190px; position: relative; overflow: hidden; background: linear-gradient(135deg,#dfe6dd,#adbcae); }
+    .car-photo img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .3s; }
+    .car-card:hover .car-photo img { transform: scale(1.035); }
+    .photo-tag { position: absolute; top: 13px; left: 13px; padding: 6px 9px; border: 1px solid rgba(255,255,255,.55); border-radius: 999px; color: #253029; background: rgba(255,255,255,.92); font-size: 9px; font-weight: 800; letter-spacing: .3px; text-transform: uppercase; }
+    .save-icon { position: absolute; top: 11px; right: 11px; width: 34px; height: 34px; display: grid; place-items: center; border: 0; border-radius: 50%; color: #28322c; background: rgba(255,255,255,.92); cursor: pointer; }
+    .save-icon svg { width: 17px; height: 17px; }
+    .save-icon[aria-pressed="true"] { color: #496a28; background: var(--green); }
+    .car-info { padding: 16px 17px 15px; }
+    .car-make { margin: 0 0 5px; color: #75806f; font-size: 9px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; }
+    .car-title-row { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+    .car-title-row h3 { min-width: 0; margin: 0; overflow: hidden; font-size: 18px; letter-spacing: -.5px; text-overflow: ellipsis; white-space: nowrap; }
+    .car-price { color: #526b43; font-size: 12px; font-weight: 800; white-space: nowrap; }
+    .car-trim { margin: 4px 0 13px; color: var(--muted); font-size: 11px; }
+    .spec-line { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; padding: 11px 0; border-top: 1px solid #eef0eb; border-bottom: 1px solid #eef0eb; }
+    .spec { min-width: 0; }
+    .spec strong { display: block; overflow: hidden; font-size: 12px; font-weight: 750; text-overflow: ellipsis; white-space: nowrap; }
+    .spec span { display: block; margin-top: 3px; color: #858a83; font-size: 9px; }
+    .card-actions { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-top: 12px; }
+    .text-button, .compare-button { min-height: 31px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 0; background: transparent; font-size: 10px; font-weight: 750; cursor: pointer; }
+    .text-button { padding: 0; color: var(--deep-green); }
+    .text-button svg, .compare-button svg { width: 14px; height: 14px; }
+    .compare-button { padding: 0 10px; border: 1px solid var(--line); border-radius: 7px; color: #626960; }
+    .compare-button[aria-pressed="true"] { border-color: #cdddb0; color: #314926; background: #f2f8e8; }
+    .empty-state { grid-column: 1 / -1; padding: 46px 20px; border: 1px dashed #cdd2c8; border-radius: var(--radius); text-align: center; }
+    .empty-state h3 { margin: 0 0 7px; font-size: 18px; }
+    .empty-state p { margin: 0; color: var(--muted); font-size: 13px; }
+    .parts-banner { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 29px; padding: 22px 25px; border-radius: 14px; background: #e9eee1; }
+    .parts-banner strong { display: block; font-size: 15px; }
+    .parts-banner p { margin: 5px 0 0; color: #687064; font-size: 11px; }
+    .banner-button, .primary-button { min-height: 39px; padding: 0 15px; border: 0; border-radius: 8px; color: white; background: var(--deep-green); font-size: 11px; font-weight: 750; cursor: pointer; }
+    .parts-layout { display: grid; grid-template-columns: 1fr; gap: 18px; }
+    .parts-tools { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: 20px; }
+    .parts-search { width: min(370px, 100%); min-height: 41px; display: flex; align-items: center; gap: 10px; padding: 0 12px; border: 1px solid var(--line); border-radius: 9px; background: white; }
+    .parts-search svg { width: 17px; color: #798077; }
+    .parts-search input { width: 100%; border: 0; outline: 0; background: transparent; font-size: 12px; }
+    .parts-search input:focus-visible { outline: 0; }
+    .part-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .part-card { min-width: 0; display: flex; flex-direction: column; padding: 17px; border: 1px solid var(--line); border-radius: 14px; background: white; }
+    .part-symbol { width: 43px; height: 43px; display: grid; place-items: center; margin-bottom: 14px; border-radius: 12px; color: #3f5b35; background: #eef3e7; }
+    .part-symbol svg { width: 23px; height: 23px; }
+    .part-category { margin: 0 0 5px; color: #78816f; font-size: 9px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+    .part-card h3 { margin: 0; font-size: 15px; }
+    .part-card p { margin: 7px 0 15px; color: var(--muted); font-size: 11px; line-height: 1.55; }
+    .part-card-bottom { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: auto; padding-top: 12px; border-top: 1px solid #eef0eb; }
+    .part-fit { color: #778074; font-size: 9px; }
+    .part-link { padding: 0; border: 0; color: var(--deep-green); background: transparent; font-size: 10px; font-weight: 800; cursor: pointer; white-space: nowrap; }
+    .saved-panel { display: none; position: fixed; z-index: 4; top: 66px; right: max(24px, calc((100vw - 1220px) / 2)); width: min(340px, calc(100vw - 32px)); max-height: min(430px, calc(100vh - 90px)); overflow-y: auto; padding: 17px; border: 1px solid var(--line); border-radius: 14px; background: white; box-shadow: 0 15px 50px #18251d2b; }
+    .saved-panel[data-open="true"] { display: block; }
+    .saved-panel h2 { margin: 0 0 12px; font-size: 16px; }
+    .saved-item { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 11px 0; border-top: 1px solid var(--line); }
+    .saved-item strong { display: block; font-size: 12px; }
+    .saved-item span { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; }
+    .saved-item button { padding: 5px 7px; border: 0; color: #496a28; background: #f2f8e8; font-size: 10px; font-weight: 700; cursor: pointer; }
+    .saved-empty { color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .compare-tray { display: none; position: fixed; z-index: 3; right: 50%; bottom: 76px; width: min(540px, calc(100% - 28px)); align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border: 1px solid #344b3d; border-radius: 13px; color: white; background: #203f32; box-shadow: 0 12px 34px #111c1640; transform: translateX(50%); }
+    .compare-tray[data-open="true"] { display: flex; }
+    .compare-tray span { font-size: 11px; }
+    .compare-tray strong { color: var(--green); }
+    .compare-tray-actions { display: flex; gap: 8px; }
+    .compare-tray button { min-height: 32px; padding: 0 11px; border: 1px solid #718479; border-radius: 7px; color: white; background: transparent; font-size: 10px; font-weight: 700; cursor: pointer; }
+    .compare-tray button:last-child { border-color: var(--green); color: var(--deep-green); background: var(--green); }
+    dialog { width: min(670px, calc(100% - 28px)); max-height: min(88vh, 760px); overflow: auto; padding: 0; border: 1px solid #e2e5dc; border-radius: 18px; color: var(--ink); background: white; box-shadow: 0 25px 80px #101a1455; }
+    dialog::backdrop { background: rgba(17, 28, 22, .56); backdrop-filter: blur(3px); }
+    .dialog-head { position: sticky; z-index: 1; top: 0; display: flex; justify-content: flex-end; padding: 12px; background: rgba(255,255,255,.95); }
+    .dialog-close { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: white; font-size: 19px; cursor: pointer; }
+    .detail-content { padding: 0 26px 27px; }
+    .detail-content h2 { margin: 0; font-size: 29px; letter-spacing: -1px; }
+    .detail-subtitle { margin: 7px 0 20px; color: var(--muted); font-size: 12px; }
+    .detail-tabs { display: flex; gap: 18px; margin-bottom: 17px; border-bottom: 1px solid var(--line); }
+    .detail-tab { padding: 0 0 10px; border: 0; border-bottom: 2px solid transparent; color: var(--muted); background: none; font-size: 11px; font-weight: 750; cursor: pointer; }
+    .detail-tab[aria-selected="true"] { border-color: var(--deep-green); color: var(--deep-green); }
+    .detail-specs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin-bottom: 18px; }
+    .detail-spec { padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: #fbfcf9; }
+    .detail-spec span { display: block; color: var(--muted); font-size: 9px; }
+    .detail-spec strong { display: block; margin-top: 5px; font-size: 13px; }
+    .detail-copy { color: #59625a; font-size: 12px; line-height: 1.7; }
+    .feature-list { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+    .feature-pill { padding: 7px 9px; border-radius: 999px; color: #4b5b43; background: #eef3e7; font-size: 10px; }
+    .detail-parts { display: grid; gap: 9px; }
+    .detail-part { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 11px; }
+    .detail-part span { color: var(--muted); text-align: right; }
+    .compare-content { padding: 0 22px 24px; }
+    .compare-content h2 { margin: 0 0 5px; font-size: 24px; }
+    .compare-content > p { margin: 0 0 16px; color: var(--muted); font-size: 11px; }
+    .compare-scroll { overflow-x: auto; }
+    .compare-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+    .compare-table th, .compare-table td { min-width: 110px; padding: 11px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .compare-table th:first-child { min-width: 95px; color: var(--muted); font-weight: 650; }
+    .compare-table thead th { font-size: 12px; }
+    .notice { position: fixed; z-index: 6; left: 50%; bottom: 18px; max-width: calc(100% - 24px); padding: 10px 14px; border-radius: 9px; color: white; background: #333e36; font-size: 11px; transform: translate(-50%, 130%); transition: transform .2s ease; }
+    .notice[data-show="true"] { transform: translate(-50%, 0); }
+    .assistant-launcher { position: fixed; z-index: 7; right: max(22px, calc((100vw - 1220px) / 2)); bottom: 20px; min-height: 48px; display: inline-flex; align-items: center; gap: 9px; padding: 0 16px; border: 1px solid #344b3d; border-radius: 999px; color: white; background: var(--deep-green); box-shadow: 0 7px 22px #17241d36; font-size: 12px; font-weight: 750; cursor: pointer; transition: transform .18s, background .18s; }
+    .assistant-launcher:hover { transform: translateY(-2px); background: #294c3c; }
+    .assistant-launcher svg { width: 19px; height: 19px; color: var(--green); }
+    .assistant-launcher .assistant-online { width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+    .assistant-panel { position: fixed; z-index: 8; right: max(22px, calc((100vw - 1220px) / 2)); bottom: 80px; width: min(388px, calc(100vw - 28px)); height: min(570px, calc(100dvh - 112px)); display: none; grid-template-rows: auto 1fr auto auto; overflow: hidden; border: 1px solid #dfe4da; border-radius: 17px; background: #fff; box-shadow: 0 17px 60px #15241d30; }
+    .assistant-panel[data-open="true"] { display: grid; }
+    .assistant-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 15px 16px; border-bottom: 1px solid var(--line); }
+    .assistant-heading { display: flex; align-items: center; gap: 11px; }
+    .assistant-mark { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 11px; color: var(--deep-green); background: var(--green); }
+    .assistant-mark svg { width: 21px; height: 21px; }
+    .assistant-title { margin: 0; font-size: 13px; font-weight: 800; }
+    .assistant-status { display: flex; align-items: center; gap: 5px; margin: 4px 0 0; color: #6f776d; font-size: 9px; }
+    .assistant-status::before { width: 6px; height: 6px; border-radius: 50%; background: #83ae4a; content: ""; }
+    .assistant-close { width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: white; font-size: 18px; cursor: pointer; }
+    .assistant-messages { display: flex; flex-direction: column; gap: 11px; overflow-y: auto; padding: 17px 14px; overscroll-behavior: contain; }
+    .assistant-message { max-width: 91%; align-self: flex-start; padding: 11px 12px; border: 1px solid #e9ece5; border-radius: 4px 12px 12px 12px; color: #384139; background: #f7f8f4; font-size: 11px; line-height: 1.65; white-space: pre-line; overflow-wrap: anywhere; }
+    .assistant-message[data-role="user"] { align-self: flex-end; border-color: #304d3b; border-radius: 12px 4px 12px 12px; color: white; background: var(--deep-green); }
+    .assistant-suggestions { display: flex; gap: 7px; overflow-x: auto; padding: 0 13px 11px; }
+    .assistant-suggestions button { flex: 0 0 auto; min-height: 30px; padding: 0 10px; border: 1px solid var(--line); border-radius: 999px; color: #53604e; background: white; font-size: 9px; cursor: pointer; }
+    .assistant-suggestions button:hover { border-color: #aebb9d; background: #f7faF2; }
+    .assistant-form { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-top: 1px solid var(--line); }
+    .assistant-form input { min-width: 0; min-height: 39px; flex: 1; padding: 0 11px; border: 1px solid var(--line); border-radius: 9px; background: #fbfcfa; font-size: 11px; }
+    .assistant-form button { width: 39px; height: 39px; display: grid; flex: 0 0 auto; place-items: center; border: 0; border-radius: 9px; color: var(--deep-green); background: var(--green); cursor: pointer; }
+    .assistant-form button svg { width: 17px; }
+    .assistant-disclaimer { margin: 0; padding: 0 13px 10px; color: #81877e; font-size: 9px; line-height: 1.5; }
+    .footer { padding: 23px 0 28px; border-top: 1px solid var(--line); color: #7c827b; font-size: 10px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 16px; }
+    [hidden] { display: none !important; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    @media (max-width: 900px) {
+      .car-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .part-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero { min-height: 375px; }
+      .hero-content { padding-left: 34px; }
+      .nav { gap: 16px; }
+    }
+    @media (max-width: 640px) {
+      .shell { width: min(100% - 28px, 500px); }
+      .topbar { height: 65px; }
+      .topbar-inner { gap: 10px; }
+      .brand { font-size: 16px; }
+      .brand-mark { width: 31px; height: 31px; }
+      .nav { gap: 13px; margin: 0 0 0 auto; }
+      .nav-link { font-size: 11px; }
+      .top-actions { display: none; }
+      .hero { min-height: 390px; margin-top: 14px; border-radius: 16px; }
+      .hero::before { background-position: 59% center; }
+      .hero-content { padding: 29px 22px 25px; }
+      .hero h1 { font-size: 47px; letter-spacing: -2.2px; }
+      .hero-copy { font-size: 12px; }
+      .search-box { min-height: 48px; gap: 8px; padding-left: 11px; }
+      .search-box button { padding: 0 11px; }
+      .search-box input { font-size: 11px; }
+      .page-section { padding-top: 34px; }
+      .section-heading { align-items: flex-start; flex-direction: column; gap: 8px; }
+      .toolbar { align-items: flex-start; flex-direction: column; }
+      .toolbar-side { width: 100%; justify-content: space-between; }
+      .car-grid { grid-template-columns: 1fr; gap: 12px; }
+      .car-photo { height: 205px; }
+      .parts-banner { align-items: flex-start; flex-direction: column; }
+      .part-grid { grid-template-columns: 1fr; }
+      .detail-content { padding: 0 18px 22px; }
+      .detail-specs { grid-template-columns: repeat(2, 1fr); }
+      .detail-content h2 { font-size: 24px; }
+      .footer-inner { flex-direction: column; }
+      .assistant-launcher { right: 14px; bottom: 14px; min-height: 45px; padding: 0 13px; }
+      .assistant-panel { right: 10px; bottom: 69px; width: min(388px, calc(100vw - 20px)); height: min(560px, calc(100dvh - 85px)); }
+      .compare-tray { bottom: 70px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#home" aria-label="Motor Atlas home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 14.5 5 9.7a2 2 0 0 1 1.8-1.2h10.4A2 2 0 0 1 19 9.7l2 4.8v4h-2v-2H5v2H3v-4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M5.5 14.5h13M7 17h.01M17 17h.01M7 8.5l1-3h8l1 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+        <span>motor atlas</span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <button class="nav-link" type="button" data-page="cars" aria-current="page">Explore cars</button>
+        <button class="nav-link" type="button" data-page="parts">Parts library</button>
+      </nav>
+      <div class="top-actions">
+        <button class="saved-button" id="saved-toggle" type="button" aria-expanded="false" aria-controls="saved-panel">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.4 8.6c0 4.1-8.4 10-8.4 10S3.6 12.7 3.6 8.6A4.4 4.4 0 0 1 12 7.2a4.4 4.4 0 0 1 8.4 1.4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          Saved <span id="saved-count">0</span>
+        </button>
+        <span class="avatar" aria-label="Motor Atlas guest profile">MA</span>
+      </div>
+    </div>
+  </header>
+  <main id="home" class="shell">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <span class="eyebrow">Your guide to the world's cars</span>
+        <h1 id="hero-title">Every drive<br>has a story.</h1>
+        <p class="hero-copy">Get to know the machines that move us — from the numbers under the hood to the parts that bring them to life.</p>
+        <label class="search-box" aria-label="Search cars by make, model, or type">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <input id="car-search" type="search" autocomplete="off" placeholder="Try “electric SUV” or “Porsche 911”">
+          <button id="search-button" type="button">Search</button>
+        </label>
+        <p class="hero-note">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 20 6v5c0 5.2-3.5 8.4-8 10-4.5-1.6-8-4.8-8-10V6l8-3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m8.5 12 2.2 2.2 4.8-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Independent information. No account needed.
+        </p>
+      </div>
+    </section>
+    <section class="page-section" id="cars-page" aria-labelledby="cars-heading">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">The car index</p>
+          <h2 id="cars-heading">Find your kind of drive</h2>
+          <p class="section-subtitle">Browse the details. Compare the numbers. Follow your curiosity.</p>
+        </div>
+        <span class="result-count" id="car-count" aria-live="polite"></span>
+      </div>
+      <div class="toolbar">
+        <div class="filter-row" id="body-filters" aria-label="Filter by vehicle type"></div>
+        <div class="toolbar-side">
+          <label class="select-wrap"><span class="sr-only">Filter by manufacturer</span><select id="make-filter" aria-label="Filter by manufacturer"><option value="all">All makes</option></select></label>
+          <label class="select-wrap"><span class="sr-only">Sort cars</span><select id="sort-filter" aria-label="Sort cars"><option value="featured">Sort: featured</option><option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option><option value="power-desc">Power: high to low</option><option value="name-asc">Name: A to Z</option></select></label>
+        </div>
+      </div>
+      <div class="car-grid" id="car-grid" aria-live="polite"></div>
+      <aside class="parts-banner">
+        <div><strong>What makes a car, a car?</strong><p>Get to know the systems, components, and clever engineering under the surface.</p></div>
+        <button class="banner-button" type="button" data-go-parts>Explore the parts library <span aria-hidden="true">→</span></button>
+      </aside>
+    </section>
+    <section class="page-section" id="parts-page" aria-labelledby="parts-heading" hidden>
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Under the hood & beyond</p>
+          <h2 id="parts-heading">A little about every part</h2>
+          <p class="section-subtitle">Plain-language guides to the systems that make a car work.</p>
+        </div>
+        <span class="result-count" id="part-count" aria-live="polite"></span>
+      </div>
+      <div class="parts-tools">
+        <div class="filter-row" id="part-filters" aria-label="Filter by part category"></div>
+        <label class="parts-search">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <input id="part-search" type="search" autocomplete="off" placeholder="Search parts or systems" aria-label="Search parts or systems">
+        </label>
+      </div>
+      <div class="part-grid" id="part-grid" aria-live="polite"></div>
+    </section>
+  </main>
+  <div class="saved-panel" id="saved-panel" data-open="false" aria-label="Saved cars">
+    <h2>Your saved cars</h2>
+    <div id="saved-list"></div>
+  </div>
+  <div class="compare-tray" id="compare-tray" data-open="false" aria-live="polite">
+    <span><strong id="compare-count">0</strong> cars ready to compare</span>
+    <div class="compare-tray-actions"><button type="button" id="clear-compare">Clear</button><button type="button" id="open-compare">Compare cars</button></div>
+  </div>
+  <dialog id="details-dialog" aria-labelledby="detail-title">
+    <div class="dialog-head"><button class="dialog-close" type="button" data-close-dialog aria-label="Close details">×</button></div>
+    <div class="detail-content" id="detail-content"></div>
+  </dialog>
+  <dialog id="compare-dialog" aria-labelledby="compare-title">
+    <div class="dialog-head"><button class="dialog-close" type="button" data-close-dialog aria-label="Close comparison">×</button></div>
+    <div class="compare-content" id="compare-content"></div>
+  </dialog>
+  <div class="notice" id="notice" role="status" aria-live="polite"></div>
+  <button class="assistant-launcher" id="assistant-launcher" type="button" aria-expanded="false" aria-controls="assistant-panel">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 9h8m-8 4h5m-8 8 2.3-3.1A8 8 0 1 1 20 12c0 4.4-3.6 8-8 8a8 8 0 0 1-2.7-.5L5 21Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Ask Atlas AI <span class="assistant-online" aria-label="Ready"></span>
+  </button>
+  <aside class="assistant-panel" id="assistant-panel" data-open="false" aria-label="Atlas car guide" aria-hidden="true">
+    <div class="assistant-header">
+      <div class="assistant-heading">
+        <span class="assistant-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1M8 12h8m-4-4v8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+        <div><p class="assistant-title">Atlas AI</p><p class="assistant-status">Catalog-grounded car guide</p></div>
+      </div>
+      <button class="assistant-close" id="assistant-close" type="button" aria-label="Close car assistant">×</button>
+    </div>
+    <div class="assistant-messages" id="assistant-messages" role="log" aria-live="polite" aria-relevant="additions text"></div>
+    <div class="assistant-suggestions" aria-label="Suggested questions">
+      <button type="button" data-ask="Compare the Toyota Land Cruiser and Tesla Model 3">Compare two cars</button>
+      <button type="button" data-ask="Show me electric cars">Electric cars</button>
+      <button type="button" data-ask="What does a transmission do?">Explain a car part</button>
+    </div>
+    <form class="assistant-form" id="assistant-form">
+      <label class="sr-only" for="assistant-input">Ask about a car or car part</label>
+      <input id="assistant-input" type="text" maxlength="240" autocomplete="off" placeholder="Ask about a car or part…" required>
+      <button type="submit" aria-label="Send your question"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m21 3-7.2 18-3.9-7.9L2 9.2 21 3Zm0 0L9.9 13.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </form>
+    <p class="assistant-disclaimer">Answers are based only on this sample catalog. No external AI or live vehicle database is connected. Verify specifications and safety advice with the manufacturer or a qualified professional.</p>
+  </aside>
+  <footer class="footer">
+    <div class="shell footer-inner"><span>© 2025 Motor Atlas · Built for the curious.</span><span>This sample catalog is not a complete global vehicle database. Specifications vary by market and model year. Check manufacturer sources before buying.</span></div>
+  </footer>
+  <script>
+    "use strict";
+    const cars = [
+      { id: "911", make: "Porsche", model: "911 Carrera GTS", year: 2025, trim: "3.6L T-Hybrid · 8-speed PDK", body: "Coupe", fuel: "Hybrid", drivetrain: "AWD", price: 164900, priceLabel: "$164,900", engine: "3.6L flat-six hybrid", power: 532, powerLabel: "532 hp", torque: "449 lb-ft",       zeroToSixty: "2.9 sec", topSpeed: "194 mph", efficiency: "18 / 23 mpg", weight: "3,536 lb", range: "Hybrid", dimensions: "178.8 × 72.9 × 51.3 in", features: ["T-Hybrid system", "Active aerodynamics", "Rear-axle steering"], image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=82", alt: "Silver Porsche sports coupe on a mountain road", blurb: "A sharp-edged sports car with a newly electrified heart. The Carrera GTS pairs a compact turbocharged flat-six with an electric motor integrated into its turbocharger and transmission." },
+      { id: "defender", make: "Land Rover", model: "Defender 110", year: 2025, trim: "P400 X-Dynamic SE · Mild hybrid", body: "SUV", fuel: "Hybrid", drivetrain: "AWD", price: 72700, priceLabel: "$72,700", engine: "3.0L turbo inline-six", power: 395, powerLabel: "395 hp", torque: "406 lb-ft", zeroToSixty: "5.8 sec", topSpeed: "119 mph", efficiency: "18 / 20 mpg", weight: "5,200 lb", range: "Mild hybrid", dimensions: "197.6 × 79.1 × 77.4 in", features: ["Terrain Response 2", "Air suspension", "Three-row option"], image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1000&q=82", alt: "Dark four-wheel-drive SUV in a forest", blurb: "Designed for the long way round, the Defender blends all-terrain capability with a comfortable, configurable cabin and modern driver-assistance technology." },
+      { id: "m3", make: "BMW", model: "M3 Competition xDrive", year: 2025, trim: "3.0L twin-turbo · 8-speed automatic", body: "Sedan", fuel: "Gasoline", drivetrain: "AWD", price: 84900, priceLabel: "$84,900", engine: "3.0L twin-turbo inline-six", power: 523, powerLabel: "523 hp", torque: "479 lb-ft", zeroToSixty: "3.4 sec", topSpeed: "180 mph", efficiency: "16 / 23 mpg", weight: "3,990 lb", range: "Gasoline", dimensions: "189.1 × 74.3 × 56.6 in", features: ["M xDrive", "Adaptive M suspension", "Carbon roof option"], image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1000&q=82", alt: "Blue performance sedan parked outdoors", blurb: "A four-door performance benchmark with everyday space, a twin-turbocharged inline-six, and a configurable all-wheel-drive system." },
+      { id: "model3", make: "Tesla", model: "Model 3 Long Range", year: 2025, trim: "Dual Motor · All-wheel drive", body: "Sedan", fuel: "Electric", drivetrain: "AWD", price: 42490, priceLabel: "$42,490", engine: "Dual electric motors", power: 441, powerLabel: "441 hp", torque: "364 lb-ft", zeroToSixty: "4.2 sec", topSpeed: "125 mph", efficiency: "137 MPGe", weight: "4,034 lb", range: "363 mi EPA est.", dimensions: "185.8 × 72.8 × 56.7 in", features: ["363-mile EPA-est. range", "Glass roof", "Over-the-air updates"], image: "https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=1000&q=82", alt: "White electric sedan parked in the city", blurb: "A streamlined electric sedan built around a spacious cabin, a large central display, and an EPA-estimated 363 miles of range on a full charge." },
+      { id: "gclass", make: "Mercedes-Benz", model: "G 550", year: 2025, trim: "3.0L turbo inline-six · 9G-TRONIC", body: "SUV", fuel: "Hybrid", drivetrain: "AWD", price: 148250, priceLabel: "$148,250", engine: "3.0L turbo inline-six hybrid", power: 443, powerLabel: "443 hp", torque: "413 lb-ft", zeroToSixty: "5.3 sec", topSpeed: "130 mph", efficiency: "17 / 19 mpg", weight: "5,531 lb", range: "Mild hybrid", dimensions: "189.7 × 76.0 × 77.5 in", features: ["Three locking differentials", "Low-range transfer case", "Mild-hybrid assist"], image: "https://images.unsplash.com/photo-1520031441872-265e4ff70366?auto=format&fit=crop&w=1000&q=82", alt: "Black luxury SUV on a winding road", blurb: "An iconic, boxy off-roader modernized with a mild-hybrid powertrain, a luxurious cabin, and three locking differentials for serious trail work." },
+      { id: "landcruiser", make: "Toyota", model: "Land Cruiser", year: 2025, trim: "i-FORCE MAX · 8-speed automatic", body: "SUV", fuel: "Hybrid", drivetrain: "AWD", price: 56900, priceLabel: "$56,900", engine: "2.4L turbo hybrid inline-four", power: 326, powerLabel: "326 hp", torque: "465 lb-ft", zeroToSixty: "7.7 sec", topSpeed: "108 mph", efficiency: "22 / 25 mpg", weight: "5,300 lb", range: "Hybrid", dimensions: "193.8 × 77.9 × 73.2 in", features: ["Full-time 4WD", "Crawl Control", "Standard rear locking differential"], image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=82", alt: "Adventure-ready 4x4 driving in the countryside", blurb: "A practical, trail-ready 4x4 that trades a larger engine for turbo-hybrid torque, modern safety tech, and a reputation built over decades." },
+      { id: "296", make: "Ferrari", model: "296 GTB", year: 2025, trim: "3.0L V6 plug-in hybrid · 8-speed DCT", body: "Coupe", fuel: "Plug-in hybrid", drivetrain: "RWD", price: 338950, priceLabel: "$338,950", engine: "3.0L twin-turbo V6 PHEV", power: 819, powerLabel: "819 hp", torque: "546 lb-ft", zeroToSixty: "2.9 sec", topSpeed: "205 mph", efficiency: "15 mi electric range", weight: "3,241 lb", range: "Plug-in hybrid", dimensions: "179.9 × 77.2 × 46.7 in", features: ["120° V6 architecture", "PHEV drive mode", "e-Diff rear differential"], image: "https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&w=1000&q=82", alt: "Red Italian sports car on a scenic road", blurb: "A mid-engine supercar with a compact 120-degree V6 and plug-in hybrid system, delivering striking performance with a short electric-only driving mode." },
+      { id: "ioniq5n", make: "Hyundai", model: "IONIQ 5 N", year: 2025, trim: "Dual Motor · 84 kWh battery", body: "SUV", fuel: "Electric", drivetrain: "AWD", price: 66800, priceLabel: "$66,800", engine: "Dual electric motors", power: 641, powerLabel: "641 hp", torque: "568 lb-ft", zeroToSixty: "3.25 sec", topSpeed: "162 mph", efficiency: "221 mi EPA est.", weight: "4,861 lb", range: "221 mi EPA est.", dimensions: "185.6 × 76.4 × 62.4 in", features: ["N Grin Boost", "84 kWh battery", "Electronically controlled suspension"], image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=1000&q=82", alt: "Modern electric crossover viewed from the side", blurb: "A performance electric crossover that puts driver engagement first, with a high-output dual-motor setup and track-focused thermal management." }
+    ];
+    const parts = [
+      { id: "engine", name: "Engine", category: "Engine", mark: "ENG", description: "Converts fuel or electricity into the power that moves a vehicle.", fit: "Power generation", detail: "Combustion engines mix fuel and air to produce power. Electric motors turn electrical energy into motion. Many modern cars combine both." },
+      { id: "transmission", name: "Transmission", category: "Drivetrain", mark: "TRN", description: "Delivers engine or motor power to the driven wheels.", fit: "Power delivery", detail: "A transmission matches the power source's speed to road speed. Designs include manual, automatic, dual-clutch, and single-speed EV units." },
+      { id: "brakes", name: "Brake system", category: "Brakes", mark: "BRK", description: "Slows the car with friction; many hybrids also recapture energy.", fit: "Stopping power", detail: "Disc brakes clamp pads onto rotors to slow the wheels. ABS helps prevent wheel lock, while regenerative braking can feed energy back to a battery." },
+      { id: "suspension", name: "Suspension", category: "Chassis", mark: "SUS", description: "Keeps tires in contact with the road and smooths out bumps.", fit: "Ride & handling", detail: "Springs, dampers, control arms, and links control each wheel's movement. The geometry and tuning influence ride comfort, grip, and steering response." },
+      { id: "battery", name: "High-voltage battery", category: "Electrical", mark: "BAT", description: "Stores the energy used by an electric or plug-in hybrid car.", fit: "Energy storage", detail: "Battery packs contain many monitored cells and a thermal-management system. Usable capacity and charging speed vary by model and conditions." },
+      { id: "cooling", name: "Cooling system", category: "Engine", mark: "CLG", description: "Keeps the engine, battery, or motors within a safe temperature range.", fit: "Thermal control", detail: "Pumps, radiators, fans, and coolant move excess heat away from key components. EVs may use separate cooling circuits for the battery and drive units." },
+      { id: "tires", name: "Tires & wheels", category: "Chassis", mark: "TIR", description: "The only contact between the car and the road surface.", fit: "Grip & comfort", detail: "Tires carry the vehicle, transmit steering and braking forces, and affect efficiency. Use the size, load rating, and pressure specified for your exact model." },
+      { id: "steering", name: "Steering system", category: "Chassis", mark: "STR", description: "Translates driver input into precise direction at the front wheels.", fit: "Vehicle control", detail: "Most current cars use electric power steering, which assists turning and can support driver-assistance features. Alignment and tire condition affect feel." },
+      { id: "sensors", name: "Sensors & driver assist", category: "Electrical", mark: "SNS", description: "Cameras, radar, and sensors help monitor the vehicle and its surroundings.", fit: "Awareness & safety", detail: "Driver-assistance systems use cameras, radar, ultrasonic sensors, and software. They can assist, but do not replace attentive driving." },
+      { id: "body", name: "Body & frame", category: "Body", mark: "BDY", description: "Forms the passenger space and manages structural loads in a crash.", fit: "Structure & safety", detail: "The body structure balances strength, stiffness, weight, and crash-energy management. Materials and repair procedures are model-specific." },
+      { id: "exhaust", name: "Exhaust & emissions", category: "Engine", mark: "EXH", description: "Routes combustion gases and helps control harmful emissions.", fit: "Gasoline & hybrid", detail: "Exhaust systems may include a catalytic converter, oxygen sensors, and a particulate filter. Battery-electric vehicles have no tailpipe exhaust." },
+      { id: "charging", name: "Charging system", category: "Electrical", mark: "CHG", description: "Connects a plug-in vehicle to an external source of electricity.", fit: "Plug-in vehicles", detail: "The onboard charger converts AC power for the battery; compatible DC fast chargers can charge the pack directly. Connector and charging speeds differ by region and model." }
+    ];
+    const bodies = ["All types", "SUV", "Sedan", "Coupe"];
+    const partCategories = ["All parts", "Engine", "Drivetrain", "Brakes", "Chassis", "Electrical", "Body"];
+    const carGrid = document.getElementById("car-grid");
+    const partGrid = document.getElementById("part-grid");
+    const carSearch = document.getElementById("car-search");
+    const partSearch = document.getElementById("part-search");
+    const makeFilter = document.getElementById("make-filter");
+    const sortFilter = document.getElementById("sort-filter");
+    const carsPage = document.getElementById("cars-page");
+    const partsPage = document.getElementById("parts-page");
+    const savedPanel = document.getElementById("saved-panel");
+    const savedList = document.getElementById("saved-list");
+    const notice = document.getElementById("notice");
+    let activeBody = "All types";
+    let activePartCategory = "All parts";
+    let savedIds = readSaved();
+    let compareIds = [];
+    let noticeTimer;
+
+    function readSaved() {
+      try {
+        const stored = window.localStorage.getItem("motor-atlas-saved");
+        if (stored === null) return [];
+        const parsed = JSON.parse(stored);
+        if (!Array.isArray(parsed) || !parsed.every(id => typeof id === "string")) throw new TypeError("Saved list has an invalid format.");
+        return parsed.filter(id => cars.some(car => car.id === id));
+      } catch (error) {
+        console.error("Could not load saved cars from local storage.", error);
+        return [];
+      }
+    }
+    function persistSaved() {
+      try {
+        window.localStorage.setItem("motor-atlas-saved", JSON.stringify(savedIds));
+        return true;
+      } catch (error) {
+        console.error("Could not save cars to local storage.", error);
+        notify("Your browser could not save this change. Your list will reset when you leave.");
+        return false;
+      }
+    }
+    function node(tag, className, text) {
+      const element = document.createElement(tag);
+      if (className) element.className = className;
+      if (text !== undefined) element.textContent = text;
+      return element;
+    }
+    function icon(name) {
+      const paths = {
+        heart: "M20.4 8.6c0 4.1-8.4 10-8.4 10S3.6 12.7 3.6 8.6A4.4 4.4 0 0 1 12 7.2a4.4 4.4 0 0 1 8.4 1.4Z",
+        arrow: "M5 12h14m-6-6 6 6-6 6",
+        compare: "M8 5H5v14h3M16 5h3v14h-3M9 9h6m-6 3h6m-6 3h6"
+      };
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("viewBox", "0 0 24 24");
+      svg.setAttribute("fill", "none");
+      svg.setAttribute("aria-hidden", "true");
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", paths[name]);
+      path.setAttribute("stroke", "currentColor");
+      path.setAttribute("stroke-width", name === "compare" ? "1.6" : "1.8");
+      path.setAttribute("stroke-linecap", "round");
+      path.setAttribute("stroke-linejoin", "round");
+      svg.append(path);
+      return svg;
+    }
+    function notify(message) {
+      notice.textContent = message;
+      notice.dataset.show = "true";
+      window.clearTimeout(noticeTimer);
+      noticeTimer = window.setTimeout(() => { notice.dataset.show = "false"; }, 2800);
+    }
+    function renderFilters() {
+      const bodyFilters = document.getElementById("body-filters");
+      const partFilters = document.getElementById("part-filters");
+      bodyFilters.replaceChildren();
+      partFilters.replaceChildren();
+      bodies.forEach(body => {
+        const button = node("button", "filter-chip", body);
+        button.type = "button";
+        button.setAttribute("aria-pressed", String(activeBody === body));
+        button.addEventListener("click", () => { activeBody = body; renderFilters(); renderCars(); });
+        bodyFilters.append(button);
+      });
+      partCategories.forEach(category => {
+        const button = node("button", "filter-chip", category);
+        button.type = "button";
+        button.setAttribute("aria-pressed", String(activePartCategory === category));
+        button.addEventListener("click", () => { activePartCategory = category; renderFilters(); renderParts(); });
+        partFilters.append(button);
+      });
+    }
+    function renderMakeOptions() {
+      [...new Set(cars.map(car => car.make))].sort().forEach(make => {
+        const option = node("option", "", make);
+        option.value = make;
+        makeFilter.append(option);
+      });
+    }
+    function visibleCars() {
+      const query = carSearch.value.trim().toLocaleLowerCase();
+      let result = cars.filter(car => {
+        const matchesBody = activeBody === "All types" || car.body === activeBody;
+        const matchesMake = makeFilter.value === "all" || car.make === makeFilter.value;
+        const haystack = [car.make, car.model, car.body, car.fuel, car.engine, car.drivetrain].join(" ").toLocaleLowerCase();
+        return matchesBody && matchesMake && (!query || haystack.includes(query));
+      });
+      const sorting = sortFilter.value;
+      if (sorting === "price-asc") result = [...result].sort((a, b) => a.price - b.price);
+      if (sorting === "price-desc") result = [...result].sort((a, b) => b.price - a.price);
+      if (sorting === "power-desc") result = [...result].sort((a, b) => b.power - a.power);
+      if (sorting === "name-asc") result = [...result].sort((a, b) => `${a.make} ${a.model}`.localeCompare(`${b.make} ${b.model}`));
+      return result;
+    }
+    function renderCars() {
+      const results = visibleCars();
+      document.getElementById("car-count").textContent = `${results.length} ${results.length === 1 ? "car" : "cars"} in this collection`;
+      carGrid.replaceChildren();
+      if (!results.length) {
+        const empty = node("div", "empty-state");
+        empty.append(node("h3", "", "No cars found just yet"));
+        empty.append(node("p", "", "Try another search or broaden your filters."));
+        carGrid.append(empty);
+        return;
+      }
+      results.forEach(car => carGrid.append(makeCarCard(car)));
+    }
+    function makeCarCard(car) {
+      const card = node("article", "car-card");
+      const photo = node("div", "car-photo");
+      const image = document.createElement("img");
+      image.src = car.image;
+      image.alt = car.alt;
+      image.loading = "lazy";
+      image.decoding = "async";
+      image.addEventListener("error", () => { image.hidden = true; photo.style.background = "linear-gradient(135deg,#dfe6dd,#adbcae)"; }, { once: true });
+      photo.append(image);
+      photo.append(node("span", "photo-tag", car.body));
+      const save = node("button", "save-icon");
+      save.type = "button";
+      save.setAttribute("aria-label", `${savedIds.includes(car.id) ? "Remove" : "Save"} ${car.make} ${car.model}`);
+      save.setAttribute("aria-pressed", String(savedIds.includes(car.id)));
+      save.append(icon("heart"));
+      save.addEventListener("click", () => toggleSaved(car.id));
+      photo.append(save);
+
+      const info = node("div", "car-info");
+      info.append(node("p", "car-make", `${car.make} · ${car.year}`));
+      const titleRow = node("div", "car-title-row");
+      titleRow.append(node("h3", "", car.model), node("span", "car-price", car.priceLabel));
+      info.append(titleRow, node("p", "car-trim", car.trim));
+      const specs = node("div", "spec-line");
+      [[car.powerLabel, "Power"], [car.zeroToSixty, "0–60 mph"], [car.drivetrain, "Drive"]].forEach(([value, label]) => {
+        const item = node("div", "spec");
+        item.append(node("strong", "", value), node("span", "", label));
+        specs.append(item);
+      });
+      info.append(specs);
+      const actions = node("div", "card-actions");
+      const details = node("button", "text-button");
+      details.type = "button";
+      details.append(document.createTextNode("Explore specs "), icon("arrow"));
+      details.addEventListener("click", () => showCarDetails(car));
+      const compare = node("button", "compare-button");
+      compare.type = "button";
+      compare.setAttribute("aria-pressed", String(compareIds.includes(car.id)));
+      compare.append(icon("compare"), document.createTextNode(compareIds.includes(car.id) ? "Added" : "Compare"));
+      compare.addEventListener("click", () => toggleCompare(car.id));
+      actions.append(details, compare);
+      info.append(actions);
+      card.append(photo, info);
+      return card;
+    }
+    function toggleSaved(id) {
+      if (savedIds.includes(id)) savedIds = savedIds.filter(item => item !== id);
+      else savedIds = [...savedIds, id];
+      persistSaved();
+      updateSaved();
+      renderCars();
+    }
+    function updateSaved() {
+      document.getElementById("saved-count").textContent = String(savedIds.length);
+      savedList.replaceChildren();
+      if (!savedIds.length) {
+        savedList.append(node("p", "saved-empty", "Save a car with the heart button to keep it close. Your saved list stays in this browser."));
+        return;
+      }
+      savedIds.map(id => cars.find(car => car.id === id)).filter(Boolean).forEach(car => {
+        const item = node("div", "saved-item");
+        const info = node("div");
+        info.append(node("strong", "", `${car.make} ${car.model}`), node("span", "", `${car.year} · ${car.priceLabel}`));
+        const open = node("button", "", "Details");
+        open.type = "button";
+        open.addEventListener("click", () => showCarDetails(car));
+        item.append(info, open);
+        savedList.append(item);
+      });
+    }
+    function showCarDetails(car) {
+      const content = document.getElementById("detail-content");
+      content.replaceChildren();
+      content.append(node("p", "section-kicker", `${car.make} · ${car.year} · ${car.body}`));
+      const title = node("h2", "", car.model);
+      title.id = "detail-title";
+      content.append(title, node("p", "detail-subtitle", `${car.trim} · Starting around ${car.priceLabel}`));
+      const tabs = node("div", "detail-tabs");
+      const overviewButton = node("button", "detail-tab", "Overview & specifications");
+      const partsButton = node("button", "detail-tab", "Parts & systems");
+      overviewButton.type = partsButton.type = "button";
+      overviewButton.setAttribute("aria-selected", "true");
+      partsButton.setAttribute("aria-selected", "false");
+      tabs.append(overviewButton, partsButton);
+      content.append(tabs);
+      const panel = node("div");
+      content.append(panel);
+      const specs = [
+        ["Engine", car.engine], ["Power", car.powerLabel], ["Torque", car.torque],
+        ["0–60 mph", car.zeroToSixty], ["Top speed", car.topSpeed], ["Fuel / range", car.range],
+        ["Efficiency", car.efficiency], ["Drivetrain", car.drivetrain], ["Curb weight", car.weight],
+        ["Dimensions", car.dimensions], ["Body style", car.body], ["Transmission", car.trim.split("·").slice(-1)[0].trim()]
+      ];
+      function drawOverview() {
+        panel.replaceChildren();
+        const grid = node("div", "detail-specs");
+        specs.forEach(([label, value]) => {
+          const spec = node("div", "detail-spec");
+          spec.append(node("span", "", label), node("strong", "", value));
+          grid.append(spec);
+        });
+        panel.append(grid, node("p", "detail-copy", car.blurb));
+        const featureList = node("div", "feature-list");
+        car.features.forEach(feature => featureList.append(node("span", "feature-pill", feature)));
+        panel.append(featureList);
+      }
+      function drawParts() {
+        panel.replaceChildren();
+        panel.append(node("p", "detail-copy", "Key systems found in this vehicle. Exact components and fitment vary by trim, market, and model year; verify with the manufacturer or a qualified parts supplier."));
+        const list = node("div", "detail-parts");
+        const relevant = car.fuel === "Electric" ? ["battery", "transmission", "brakes", "suspension", "tires", "steering", "sensors", "body", "charging"] : ["engine", "transmission", "brakes", "suspension", "cooling", "tires", "steering", "sensors", "body", "exhaust"];
+        parts.filter(part => relevant.includes(part.id)).forEach(part => {
+          const row = node("div", "detail-part");
+          row.append(node("strong", "", part.name), node("span", "", part.fit));
+          list.append(row);
+        });
+        panel.append(list);
+      }
+      overviewButton.addEventListener("click", () => {
+        overviewButton.setAttribute("aria-selected", "true");
+        partsButton.setAttribute("aria-selected", "false");
+        drawOverview();
+      });
+      partsButton.addEventListener("click", () => {
+        overviewButton.setAttribute("aria-selected", "false");
+        partsButton.setAttribute("aria-selected", "true");
+        drawParts();
+      });
+      drawOverview();
+      document.getElementById("details-dialog").showModal();
+    }
+    function renderParts() {
+      const query = partSearch.value.trim().toLocaleLowerCase();
+      const results = parts.filter(part => {
+        const matchesCategory = activePartCategory === "All parts" || part.category === activePartCategory;
+        return matchesCategory && (!query || `${part.name} ${part.category} ${part.description} ${part.detail}`.toLocaleLowerCase().includes(query));
+      });
+      document.getElementById("part-count").textContent = `${results.length} ${results.length === 1 ? "guide" : "guides"}`;
+      partGrid.replaceChildren();
+      if (!results.length) {
+        const empty = node("div", "empty-state");
+        empty.append(node("h3", "", "No matching parts"));
+        empty.append(node("p", "", "Try a different keyword or part category."));
+        partGrid.append(empty);
+        return;
+      }
+      results.forEach(part => {
+        const card = node("article", "part-card");
+        const symbol = node("span", "part-symbol", part.mark);
+        symbol.setAttribute("aria-hidden", "true");
+        card.append(symbol, node("p", "part-category", part.category), node("h3", "", part.name), node("p", "", part.description));
+        const bottom = node("div", "part-card-bottom");
+        bottom.append(node("span", "part-fit", part.fit));
+        const read = node("button", "part-link", "Learn more →");
+        read.type = "button";
+        read.addEventListener("click", () => showPartDetails(part));
+        bottom.append(read);
+        card.append(bottom);
+        partGrid.append(card);
+      });
+    }
+    function showPartDetails(part) {
+      const content = document.getElementById("detail-content");
+      content.replaceChildren(node("p", "section-kicker", part.category), node("h2", "", part.name), node("p", "detail-subtitle", part.fit), node("p", "detail-copy", part.detail));
+      const subhead = node("h3", "", "Good to know");
+      subhead.style.marginTop = "22px";
+      subhead.style.fontSize = "14px";
+      content.append(subhead, node("p", "detail-copy", "Parts differ between manufacturers, trims, and model years. Check the vehicle identification number (VIN), owner's manual, or a trusted professional to confirm exact compatibility before ordering or working on a vehicle."));
+      document.getElementById("details-dialog").showModal();
+    }
+    function normalizeQuestion(value) {
+      return value.toLocaleLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9$.,\s-]/g, " ").replace(/\s+/g, " ").trim();
+    }
+    function mentionedCars(question) {
+      const query = normalizeQuestion(question);
+      return cars.filter(car => {
+        const aliases = [`${car.make} ${car.model}`, car.model];
+        if (car.id === "911") aliases.push("porsche 911", "911");
+        if (car.id === "model3") aliases.push("tesla model 3", "model 3");
+        if (car.id === "m3") aliases.push("bmw m3");
+        if (car.id === "296") aliases.push("ferrari 296");
+        if (car.id === "gclass") aliases.push("g-wagen", "g wagon", "g 550");
+        if (car.id === "ioniq5n") aliases.push("ioniq 5 n", "ioniq");
+        return aliases.some(alias => query.includes(normalizeQuestion(alias)));
+      });
+    }
+    function mentionedPart(question) {
+      const query = normalizeQuestion(question);
+      const aliases = {
+        engine: ["motor", "combustion"],
+        transmission: ["gearbox", "gears"],
+        brakes: ["brake", "abs"],
+        suspension: ["shock", "springs"],
+        battery: ["ev battery", "battery pack"],
+        cooling: ["radiator", "coolant"],
+        tires: ["tyre", "tires", "tyres", "wheel"],
+        steering: ["power steering"],
+        sensors: ["camera", "radar", "driver assist", "adas"],
+        body: ["frame", "chassis"],
+        exhaust: ["emissions", "catalytic converter"],
+        charging: ["charger", "charging port"]
+      };
+      return parts.find(part => [part.name, ...aliases[part.id]].some(term => query.includes(normalizeQuestion(term)))) || null;
+    }
+    function parseBudget(question) {
+      const match = normalizeQuestion(question).match(/(?:under|below|less than|max(?:imum)?|budget(?: of)?|up to)\s*\$?\s*([\d,]+(?:\.\d+)?)\s*(k)?/);
+      if (!match) return null;
+      const amount = Number(match[1].replace(/,/g, ""));
+      return Number.isFinite(amount) ? amount * (match[2] ? 1000 : 1) : null;
+    }
+    function answerQuestion(question) {
+      const query = normalizeQuestion(question);
+      const namedCars = mentionedCars(question);
+      const asksToCompare = /\b(compare|comparison|versus|vs)\b/.test(query);
+      if (asksToCompare) {
+        if (namedCars.length < 2) {
+          return { text: "For a grounded comparison, name at least two cars from this catalog, for example “Compare the Toyota Land Cruiser and Tesla Model 3.” You can also add cars with Compare and use the comparison tray." };
+        }
+        const [first, second] = namedCars;
+        return {
+          text: `${first.make} ${first.model} vs. ${second.make} ${second.model}\n\nStarting price: ${first.priceLabel} vs. ${second.priceLabel}\nPower: ${first.powerLabel} vs. ${second.powerLabel}\nEngine / motor: ${first.engine} vs. ${second.engine}\n0–60 mph: ${first.zeroToSixty} vs. ${second.zeroToSixty}\nDrivetrain: ${first.drivetrain} vs. ${second.drivetrain}\nRange / fuel: ${first.range} vs. ${second.range}\n\nThese are catalog figures, not an independently checked or exact like-for-like test. Model year, trim, and market affect specifications.`,
+          cars: [first, second]
+        };
+      }
+      const isRepairRequest = /\b(fix|repair|replace|install|diagnos|bypass|disable)\b/.test(query);
+      const part = mentionedPart(question);
+      const asksAboutSpecificPart = /\b(part|parts|battery|brake|brakes|engine|motor|transmission|gearbox|suspension|tire|tires|tyre|tyres|wheel|cooling|radiator|steering|sensor|sensors|charging|charger|exhaust|frame|body)\b/.test(query);
+      if (part && namedCars.length && asksAboutSpecificPart && !isRepairRequest) {
+        const car = namedCars[0];
+        return {
+          text: `${part.name} information\n\n${part.detail}\n\nThat's a general explanation, not a verified ${car.make} ${car.model} fitment or component specification. Check the manufacturer's information or a qualified parts supplier for the exact model year, trim, and VIN.`,
+          cars: [car],
+          part
+        };
+      }
+      if (part && !namedCars.length) {
+        if (isRepairRequest) {
+          return { text: `I can explain what a ${part.name.toLocaleLowerCase()} does, but I can't diagnose or confirm a repair from chat. ${part.detail} For repair procedures, compatibility, or safety-critical work, use the manufacturer's service information or a qualified technician.` };
+        }
+        return { text: `${part.name} · ${part.category}\n\n${part.detail}\n\nCheck the exact vehicle's manual for model-specific information.`, part };
+      }
+      const hasFuelFilter = /\b(electric|ev|hybrid|gasoline|gas|plug.in hybrid)\b/.test(query);
+      const hasBodyFilter = /\b(suv|crossover|sedan|coupe)\b/.test(query);
+      const hasBudgetFilter = parseBudget(question) !== null;
+      const asksForList = /\b(find|show|recommend|suggest|which|list|options|cars|vehicles)\b/.test(query);
+      if (!namedCars.length && asksForList && (hasFuelFilter || hasBodyFilter || hasBudgetFilter)) {
+        const budget = parseBudget(question);
+        const matches = cars.filter(car => {
+          const fuelMatches = !hasFuelFilter ||
+            (/\b(electric|ev)\b/.test(query) && car.fuel === "Electric") ||
+            (/\bhybrid\b/.test(query) && car.fuel.toLocaleLowerCase().includes("hybrid")) ||
+            (/\b(gasoline|gas)\b/.test(query) && car.fuel === "Gasoline") ||
+            (/\bplug.in hybrid\b/.test(query) && car.fuel === "Plug-in hybrid");
+          const bodyMatches = !hasBodyFilter || /\bsuv\b|\bcrossover\b/.test(query) && car.body === "SUV" ||
+            /\bsedan\b/.test(query) && car.body === "Sedan" ||
+            /\bcoupe\b/.test(query) && car.body === "Coupe";
+          return fuelMatches && bodyMatches && (budget === null || car.price <= budget);
+        }).slice(0, 4);
+        if (!matches.length) {
+          return { text: `I couldn't find a car in the sample catalog${budget === null ? "" : ` under $${budget.toLocaleString()}`}${hasFuelFilter ? " with those powertrain preferences" : ""}${hasBodyFilter ? " in that body style" : ""}. Try changing the budget or filters, or browse all ${cars.length} example cars.` };
+        }
+        return {
+          text: `Here ${matches.length === 1 ? "is a catalog match" : `are ${matches.length} catalog matches`} for your filters${budget === null ? "" : ` (up to $${budget.toLocaleString()})`}. This isn't a personalized or live-market recommendation.`,
+          cars: matches
+        };
+      }
+      if (namedCars.length) {
+        const car = namedCars[0];
+        if (isRepairRequest) {
+          return { text: `I can share the listed specifications for the ${car.make} ${car.model}, but I can't safely diagnose or walk you through repairs. For model-specific service steps or parts compatibility, check the manufacturer's information or talk to a qualified technician.`, cars: [car] };
+        }
+        const requestedSpecs = [];
+        if (/\b(price|cost|msrp|expensive|cheap)\b/.test(query)) requestedSpecs.push(["Starting price", car.priceLabel]);
+        if (/\b(power|horsepower|hp)\b/.test(query)) requestedSpecs.push(["Power", car.powerLabel]);
+        if (/\b(torque)\b/.test(query)) requestedSpecs.push(["Torque", car.torque]);
+        if (/\b(range|miles|distance|battery range)\b/.test(query)) requestedSpecs.push(["Range", car.range]);
+        if (/\b(engine|motor|powertrain)\b/.test(query)) requestedSpecs.push(["Engine / motor", car.engine]);
+        if (/\b(fuel|gas|electric|hybrid|efficien|mpg|mpge|consumption)\b/.test(query)) {
+          requestedSpecs.push(["Powertrain", car.fuel], ["Efficiency", car.efficiency]);
+        }
+        if (/\b(0.?60|acceleration|quick|fast)\b/.test(query)) requestedSpecs.push(["0–60 mph", car.zeroToSixty]);
+        if (/\b(speed|top speed)\b/.test(query)) requestedSpecs.push(["Top speed", car.topSpeed]);
+        if (/\b(weight|heavy|curb weight)\b/.test(query)) requestedSpecs.push(["Curb weight", car.weight]);
+        if (/\b(drive|drivetrain|all.?wheel|front.?wheel|rear.?wheel)\b/.test(query)) requestedSpecs.push(["Drivetrain", car.drivetrain]);
+        const details = requestedSpecs.length
+          ? requestedSpecs.map(([label, value]) => `${label}: ${value}`).join("\n")
+          : `${car.body} · ${car.year} · ${car.fuel}\n${car.engine} · ${car.powerLabel} · ${car.drivetrain}\nStarting price: ${car.priceLabel}\n${car.blurb}`;
+        return { text: `${car.make} ${car.model}\n${details}\n\nThese are example ${car.year} catalog figures. Equipment, pricing, and specifications can vary by trim and market.`, cars: [car] };
+      }
+      if (part) {
+        if (isRepairRequest) {
+          return { text: `I can explain what a ${part.name.toLocaleLowerCase()} does, but I can't diagnose or confirm a repair from chat. ${part.detail} For repair procedures, compatibility, or safety-critical work, use the manufacturer's service information or a qualified technician.` };
+        }
+        return { text: `${part.name} · ${part.category}\n\n${part.detail}\n\nCheck the exact vehicle's manual for model-specific information.`, part };
+      }
+      return { text: `I couldn't match that question to a car or part in this catalog. I can only answer from the ${cars.length} example cars and ${parts.length} part guides listed on this page; I don't have a live database or general-purpose AI connected. Try naming a listed model (like “Tesla Model 3 range”), asking to compare two listed cars, or asking what a part does.` };
+    }
+    function addAssistantMessage(text, role, references) {
+      const messages = document.getElementById("assistant-messages");
+      const bubble = node("div", "assistant-message", text);
+      bubble.dataset.role = role;
+      messages.append(bubble);
+      if (references && references.cars) {
+        references.cars.forEach(car => {
+          const button = node("button", "part-link", `View ${car.make} ${car.model} →`);
+          button.type = "button";
+          button.style.marginTop = "8px";
+          button.addEventListener("click", () => showCarDetails(car));
+          bubble.append(document.createElement("br"), button);
+        });
+      }
+      if (references && references.part) {
+        const button = node("button", "part-link", `Open ${references.part.name} guide →`);
+        button.type = "button";
+        button.style.marginTop = "8px";
+        button.addEventListener("click", () => showPartDetails(references.part));
+        bubble.append(document.createElement("br"), button);
+      }
+      while (messages.children.length > 40) messages.firstElementChild.remove();
+      messages.scrollTop = messages.scrollHeight;
+    }
+    function sendAssistantQuestion(value) {
+      const question = value.trim().slice(0, 240);
+      if (!question) return;
+      addAssistantMessage(question, "user");
+      const answer = answerQuestion(question);
+      addAssistantMessage(answer.text, "assistant", answer);
+    }
+    function setAssistantOpen(open) {
+      const panel = document.getElementById("assistant-panel");
+      const launcher = document.getElementById("assistant-launcher");
+      panel.dataset.open = String(open);
+      panel.setAttribute("aria-hidden", String(!open));
+      launcher.setAttribute("aria-expanded", String(open));
+      if (open) document.getElementById("assistant-input").focus();
+      else launcher.focus();
+    }
+    function renderCompareTray() {
+      const tray = document.getElementById("compare-tray");
+      tray.dataset.open = String(compareIds.length > 0);
+      document.getElementById("compare-count").textContent = String(compareIds.length);
+      renderCars();
+    }
+    function toggleCompare(id) {
+      if (compareIds.includes(id)) compareIds = compareIds.filter(item => item !== id);
+      else if (compareIds.length === 3) {
+        notify("You can compare up to 3 cars at a time.");
+        return;
+      } else compareIds = [...compareIds, id];
+      renderCompareTray();
+    }
+    function showComparison() {
+      if (compareIds.length < 2) {
+        notify("Add at least 2 cars to compare their specifications.");
+        return;
+      }
+      const selected = compareIds.map(id => cars.find(car => car.id === id)).filter(Boolean);
+      const content = document.getElementById("compare-content");
+      content.replaceChildren();
+      const title = node("h2", "", "Side by side");
+      title.id = "compare-title";
+      content.append(title, node("p", "", "A quick comparison of published specifications. Values can vary by market and configuration."));
+      const scroll = node("div", "compare-scroll");
+      const table = node("table", "compare-table");
+      const head = document.createElement("thead");
+      const headRow = document.createElement("tr");
+      headRow.append(document.createElement("th"));
+      selected.forEach(car => headRow.append(node("th", "", `${car.make} ${car.model}`)));
+      head.append(headRow);
+      const body = document.createElement("tbody");
+      const fields = [["Starting price", "priceLabel"], ["Year", "year"], ["Body", "body"], ["Power", "powerLabel"], ["Engine", "engine"], ["Torque", "torque"], ["0–60 mph", "zeroToSixty"], ["Drivetrain", "drivetrain"], ["Fuel / range", "range"], ["Efficiency", "efficiency"], ["Curb weight", "weight"]];
+      fields.forEach(([label, key]) => {
+        const row = document.createElement("tr");
+        row.append(node("th", "", label));
+        selected.forEach(car => row.append(node("td", "", String(car[key]))));
+        body.append(row);
+      });
+      table.append(head, body);
+      scroll.append(table);
+      content.append(scroll);
+      document.getElementById("compare-dialog").showModal();
+    }
+    function setPage(page) {
+      const showingParts = page === "parts";
+      carsPage.hidden = showingParts;
+      partsPage.hidden = !showingParts;
+      document.querySelectorAll("[data-page]").forEach(button => {
+        if (button.dataset.page === page) button.setAttribute("aria-current", "page");
+        else button.removeAttribute("aria-current");
+      });
+      savedPanel.dataset.open = "false";
+      document.getElementById("saved-toggle").setAttribute("aria-expanded", "false");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    renderMakeOptions();
+    renderFilters();
+    updateSaved();
+    renderCars();
+    renderParts();
+    document.querySelectorAll("[data-page]").forEach(button => button.addEventListener("click", () => setPage(button.dataset.page)));
+    document.querySelector("[data-go-parts]").addEventListener("click", () => setPage("parts"));
+    carSearch.addEventListener("input", renderCars);
+    document.getElementById("search-button").addEventListener("click", renderCars);
+    carSearch.addEventListener("keydown", event => { if (event.key === "Enter") renderCars(); });
+    makeFilter.addEventListener("change", renderCars);
+    sortFilter.addEventListener("change", renderCars);
+    partSearch.addEventListener("input", renderParts);
+    const savedToggle = document.getElementById("saved-toggle");
+    savedToggle.addEventListener("click", () => {
+      const open = savedPanel.dataset.open !== "true";
+      savedPanel.dataset.open = String(open);
+      savedToggle.setAttribute("aria-expanded", String(open));
+    });
+    document.addEventListener("click", event => {
+      if (savedPanel.dataset.open !== "true") return;
+      if (!savedPanel.contains(event.target) && !savedToggle.contains(event.target)) {
+        savedPanel.dataset.open = "false";
+        savedToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+    document.getElementById("clear-compare").addEventListener("click", () => { compareIds = []; renderCompareTray(); });
+    document.getElementById("open-compare").addEventListener("click", showComparison);
+    const assistantMessages = document.getElementById("assistant-messages");
+    addAssistantMessage("Hi, I'm Atlas. Ask me about a listed car's specifications, compare two cars, or look up what a part does. I'll stick to the information on this page and let you know when I can't verify an answer.", "assistant");
+    document.getElementById("assistant-launcher").addEventListener("click", () => {
+      setAssistantOpen(document.getElementById("assistant-panel").dataset.open !== "true");
+    });
+    document.getElementById("assistant-close").addEventListener("click", () => setAssistantOpen(false));
+    document.getElementById("assistant-form").addEventListener("submit", event => {
+      event.preventDefault();
+      const input = document.getElementById("assistant-input");
+      sendAssistantQuestion(input.value);
+      input.value = "";
+      input.focus();
+    });
+    document.querySelectorAll("[data-ask]").forEach(button => {
+      button.addEventListener("click", () => sendAssistantQuestion(button.dataset.ask));
+    });
+    document.querySelectorAll("[data-close-dialog]").forEach(button => button.addEventListener("click", () => button.closest("dialog").close()));
+    document.querySelectorAll("dialog").forEach(dialog => dialog.addEventListener("click", event => {
+      if (event.target === dialog) dialog.close();
+    }));
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") {
+        savedPanel.dataset.open = "false";
+        savedToggle.setAttribute("aria-expanded", "false");
+        if (document.getElementById("assistant-panel").dataset.open === "true") setAssistantOpen(false);
+      }
+    });
+  </script>
+</body>
+</html>
